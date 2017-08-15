@@ -160,10 +160,10 @@ export default class Camera extends Component {
     let check = hasVideoAndAudio ? Camera.checkDeviceAuthorizationStatus : Camera.checkVideoAuthorizationStatus;
 
     if (check) {
+      const isAuthorized = await check();
       if(this.props.onAuthorizationStatusChange) {
         this.props.onAuthorizationStatusChange(isAuthorized);
       }
-      const isAuthorized = await check();
       this.setState({ isAuthorized });
     }
   }
