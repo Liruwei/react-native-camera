@@ -160,6 +160,9 @@ export default class Camera extends Component {
     let check = hasVideoAndAudio ? Camera.checkDeviceAuthorizationStatus : Camera.checkVideoAuthorizationStatus;
 
     if (check) {
+      if(this.props.onAuthorizationStatusChange) {
+        this.props.onAuthorizationStatusChange(isAuthorized);
+      }
       const isAuthorized = await check();
       this.setState({ isAuthorized });
     }
@@ -200,8 +203,11 @@ export default class Camera extends Component {
   render() {
     const style = [styles.base, this.props.style];
     const nativeProps = convertNativeProps(this.props);
-
-    return <RCTCamera ref={CAMERA_REF} {...nativeProps} />;
+    if (this.state.isAuthorized) {
+      return <RCTCamera ref={CAMERA_REF} {...nativeProps} />;      
+    } else {
+      return <View {...nativeProps}/>
+    }
   }
 
   _onBarCodeRead = (data) => {
