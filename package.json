@@ -2,7 +2,7 @@
   "name": "react-native-camera",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lwansbrough/react-native-camera.git"
+    "url": "https://github.com/Liruwei/react-native-camera"
   },
   "version": "0.10.0",
   "description": "A Camera component for React Native. Also reads barcodes.",
