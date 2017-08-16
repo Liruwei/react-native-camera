@@ -165,6 +165,8 @@ export default class Camera extends Component {
         this.props.onAuthorizationStatusChange(isAuthorized);
       }
       this.setState({ isAuthorized });
+    } else {
+      this.setState({ isAuthorized:true });
     }
   }
 
